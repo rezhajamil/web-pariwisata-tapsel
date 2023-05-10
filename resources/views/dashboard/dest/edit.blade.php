@@ -1,7 +1,8 @@
 @extends('layouts.dashboard')
 @section('content')
     <div class="flex flex-wrap -mx-3 gap-y-4">
-        <div class="flex-none w-full max-w-full px-3">
+        <form action="{{ route('admin.destination.update', $destination->id) }}" method="post" enctype="multipart/form-data"
+            class="flex-none w-full max-w-full px-3">
             <div
                 class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                 <div
@@ -9,8 +10,9 @@
                     <h6 class="mb-0">Tambah Destinasi</h6>
                 </div>
                 <div class="px-6 py-4 sm:px-8">
-                    <form action="{{ route('admin.destination.store') }}" method="post" enctype="multipart/form-data">
+                    <div>
                         @csrf
+                        @method('put')
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div class="w-full">
                                 <input type="text" placeholder="Nama Destinasi" name="name"
@@ -66,17 +68,23 @@
                             <button type="submit"
                                 class="inline-block px-6 py-3 text-xs font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-purple-700 to-pink-500 leading-pro col-span-full ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Submit</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
             <div
                 class="relative min-w-0 px-6 py-4 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                 <span class="text-lg font-bold">Gambar Destinasi</span>
+                <span class="block text-xs italic text-red-600">*Hapus Gambar</span>
                 <div class="grid grid-cols-1 gap-3 mt-2 sm:grid-cols-2">
                     @foreach ($destination->images as $image)
-                        <div class="relative h-64 overflow-hidden border-2 border-purple-700 rounded">
+                        <label class="relative h-64 overflow-hidden border-2 border-purple-700 rounded">
                             <img src="{{ asset('storage/' . $image->url) }}" />
-                        </div>
+                            <input type="checkbox" name="delete_image[]" id="image{{ $image->id }}" class="hidden peer"
+                                value="{{ $image->id }}">
+                            <div
+                                class="absolute inset-0 hidden w-full h-full border-4 border-red-600 rounded peer-checked:block">
+                            </div>
+                        </label>
                     @endforeach
                 </div>
                 <div id="image-grid" style="display: none;"
@@ -84,7 +92,7 @@
 
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 @endsection
 @section('scripts')

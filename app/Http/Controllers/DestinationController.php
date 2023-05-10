@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Destination;
 use App\Models\DestinationImage;
 use App\Models\DestinationType;
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule as ValidationRule;
 
 class DestinationController extends Controller
 {
@@ -107,23 +110,49 @@ class DestinationController extends Controller
     public function update(Request $request, Destination $destination)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => ['required', ValidationRule::unique('destinations')->ignore($destination->id)],
             'type' => 'required',
-            'region' => 'required',
             'description' => 'required',
             'address' => 'required',
+            'maps_url' => 'nullable|url',
+            'images' => 'max:15000',
         ]);
 
         $destination->update([
-            'name' => $request->name,
+            'name' => ucwords($request->name),
             'type' => $request->type,
-            'region' => $request->region,
             'description' => $request->description,
-            'address' => $request->address,
+            'address' => ucwords($request->address),
             'maps_url' => $request->maps_url,
         ]);
 
-        return redirect()->route('dashboard.destination.index')->with('success', 'Data berhasil diubah');
+        if ($request->delete_image) {
+            if (count($request->delete_image) >= count($destination->images)) {
+                $request->validate([
+                    'images' => ['required'],
+                ]);
+            }
+
+            foreach ($request->delete_image as $key => $image) {
+                $data = DestinationImage::find($image);
+
+                DestinationImage::where('id', $image)->delete();
+                Storage::disk('public')->delete($data->image_url);
+            }
+        }
+
+        if ($request->images && $request->hasFile('images')) {
+            foreach ($request->file('images') as $key => $image) {
+                $url = $image->store('dest-images');
+                DestinationImage::create([
+                    'dest_id' => $destination->id,
+                    'url' => $url,
+                    'is_cover' => 0,
+                ]);
+            }
+        }
+
+        return redirect()->route('admin.destination.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -135,6 +164,6 @@ class DestinationController extends Controller
     public function destroy(Destination $destination)
     {
         $destination->delete();
-        return redirect()->route('dashboard.destination.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('dashboard.dest.index')->with('success', 'Data berhasil dihapus');
     }
 }
