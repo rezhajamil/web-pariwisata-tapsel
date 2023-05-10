@@ -16,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::where('is_admin', 0)->orderBy('name')->orderBy('email')->get();
+        return view('dashboard.user.index', compact('users'));
     }
 
     /**
@@ -98,17 +99,13 @@ class UserController extends Controller
             'email' => $callback->getEmail(),
             'name' => $callback->getName(),
             'avatar' => $callback->getAvatar(),
-            'role' => 'member',
+            'is_admin' => 0,
             'email_verified_at' => date('Y-m-d H:i:s')
         ];
 
         $user = User::firstOrCreate(['email' => $data['email']], $data);
         Auth::login($user, true);
 
-        if ($user->phone && $user->whatsapp && $user->address_id) {
-            return redirect()->intended();
-        } else {
-            return redirect(route('profile'));
-        }
+        return redirect()->intended();
     }
 }

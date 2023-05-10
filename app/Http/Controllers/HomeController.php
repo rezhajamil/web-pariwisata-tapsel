@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Destination;
+use App\Models\DestinationImage;
+use App\Models\DestinationType;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +16,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $destinations = Destination::with(['destType'])->orderBy("name", "asc")->get();
+        $covers = DestinationImage::where('is_cover', 1)->get();
+        $type = DestinationType::all();
+
+        $galleries = DestinationImage::limit(15)->inRandomOrder()->get();
+        return view('home', compact('destinations', 'covers', 'type', 'galleries'));
     }
 
     /**
@@ -34,7 +42,6 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**

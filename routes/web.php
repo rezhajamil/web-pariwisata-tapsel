@@ -33,6 +33,7 @@ Route::middleware('auth')->group(
             Route::put('destination_image/change_cover/{dest_id}', [DestinationImageController::class, 'changeCover'])->name('destination_image.changeCover');
             Route::post('destination_image/delete_image', [DestinationImageController::class, 'deleteImage'])->name('destination_image.deleteImage');
             Route::resource('dashboard', DashboardController::class);
+            Route::resource('user', UserController::class);
         });
     }
 );

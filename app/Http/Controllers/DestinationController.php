@@ -16,7 +16,8 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        //
+        $dests = Destination::with(['destType', 'review', 'images'])->orderBy('type')->orderBy('name')->get();
+        return view('dashboard.dest.index', compact('dests'));
     }
 
     /**
@@ -26,8 +27,8 @@ class DestinationController extends Controller
      */
     public function create()
     {
-        $types = DestinationType::all();
-        return view('admin.dest.create', compact('types'));
+        $types = DestinationType::orderBy('name')->get();
+        return view('dashboard.dest.create', compact('types'));
     }
 
     /**
@@ -41,24 +42,23 @@ class DestinationController extends Controller
         $request->validate([
             'name' => 'required|unique:destinations',
             'type' => 'required',
-            'region' => 'required',
             'description' => 'required',
             'address' => 'required',
-            'image' => 'required|max:5120',
+            'maps_url' => 'nullable|url',
+            'images' => 'required|max:15000',
         ]);
 
         $destination = Destination::create([
-            'name' => $request->name,
+            'name' => ucwords($request->name),
             'type' => $request->type,
-            'region' => $request->region,
             'description' => $request->description,
-            'address' => $request->address,
+            'address' => ucwords($request->address),
             'maps_url' => $request->maps_url,
         ]);
 
         if ($destination) {
-            if ($request->image) {
-                foreach ($request->file('image') as $key => $image) {
+            if ($request->images) {
+                foreach ($request->file('images') as $key => $image) {
                     $url = $image->store('dest-images');
                     DestinationImage::create([
                         'dest_id' => $destination->id,
@@ -68,7 +68,7 @@ class DestinationController extends Controller
                 }
             }
         }
-        return redirect()->route('admin.dashboard.index')->with('success', 'Data berhasil disimpan');
+        return redirect()->route('admin.destination.index')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -80,7 +80,8 @@ class DestinationController extends Controller
     public function show(Destination $destination)
     {
         $images = DestinationImage::where('dest_id', $destination->id)->orderBy("is_cover", "desc")->get();
-        return view('admin.dest.show', compact('destination', 'images'));
+        $destination = Destination::with(['destType', 'review.user', 'images'])->where('id', $destination->id)->first();
+        return view('dashboard.dest.show', compact('destination', 'images'));
     }
 
     /**
@@ -91,8 +92,9 @@ class DestinationController extends Controller
      */
     public function edit(Destination $destination)
     {
-        $types = DestinationType::all();
-        return view('admin.dest.edit', compact('types', 'destination'));
+        $types = DestinationType::orderBy('name')->get();
+        $destination = Destination::with(['destType', 'review.user', 'images'])->where('id', $destination->id)->first();
+        return view('dashboard.dest.edit', compact('types', 'destination'));
     }
 
     /**
@@ -121,7 +123,7 @@ class DestinationController extends Controller
             'maps_url' => $request->maps_url,
         ]);
 
-        return redirect()->route('admin.dashboard.index')->with('success', 'Data berhasil diubah');
+        return redirect()->route('dashboard.destination.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -133,6 +135,6 @@ class DestinationController extends Controller
     public function destroy(Destination $destination)
     {
         $destination->delete();
-        return redirect()->route('admin.dashboard.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('dashboard.destination.index')->with('success', 'Data berhasil dihapus');
     }
 }

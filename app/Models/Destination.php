@@ -20,4 +20,9 @@ class Destination extends Model
     {
         return $this->hasMany(DestinationReview::class, 'dest_id');
     }
+
+    public function images()
+    {
+        return $this->hasMany(DestinationImage::class, 'dest_id');
+    }
 }
