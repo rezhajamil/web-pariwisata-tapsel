@@ -19,7 +19,7 @@
                                 @error('email')
                                     <span class="block mb-2 text-sm italic text-red-600">{{ $message }}</span>
                                 @enderror
-                                <form role="form" method="POST" action="{{ route('login') }}">
+                                <form role="form" method="POST" action="{{ route('admin.login') }}">
                                     @csrf
                                     <label class="mb-2 ml-1 text-xs font-bold text-slate-700">Email</label>
                                     <div class="mb-4">

@@ -1,49 +1,25 @@
 @extends('layouts.app')
 @section('content')
     <section class="flex justify-center jumbotron">
-        <div class="w-full relative h-72 overflow-hidden sm:h-[400px] md:h-[600px]">
+        <div class="relative w-full overflow-hidden ">
             <div id="default-carousel" class="relative w-full" data-carousel="slide">
                 <!-- Carousel wrapper -->
-                <div class="relative h-56 overflow-hidden md:h-96">
-                    <!-- Item 1 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://picsum.photos/700/800"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    </div>
-                    <!-- Item 2 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://picsum.photos/800/800"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    </div>
-                    <!-- Item 3 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://picsum.photos/800/800"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    </div>
-                    <!-- Item 4 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://picsum.photos/750/800"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    </div>
-                    <!-- Item 5 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://picsum.photos/720/800"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    </div>
+                <div class="relative h-72 overflow-hidden sm:h-[400px] md:h-[600px]">
+                    @foreach ($banners as $key => $banner)
+                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                            <img src="{{ asset('storage/' . $banner->url) }}"
+                                class="absolute block object-cover w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                alt="{{ $banner->destination->name }}">
+                        </div>
+                    @endforeach
                 </div>
                 <!-- Slider indicators -->
                 <div
                     class="absolute z-30 flex px-3 py-2 space-x-3 -translate-x-1/2 rounded-full bottom-5 left-1/2 bg-secondary/60">
-                    <button type="button" class="w-3 h-3 rounded-full bg-primary" aria-current="true" aria-label="Slide 1"
-                        data-carousel-slide-to="0"></button>
-                    <button type="button" class="w-3 h-3 rounded-full bg-primary" aria-current="false" aria-label="Slide 2"
-                        data-carousel-slide-to="1"></button>
-                    <button type="button" class="w-3 h-3 rounded-full bg-primary" aria-current="false" aria-label="Slide 3"
-                        data-carousel-slide-to="2"></button>
-                    <button type="button" class="w-3 h-3 rounded-full bg-primary" aria-current="false" aria-label="Slide 4"
-                        data-carousel-slide-to="3"></button>
-                    <button type="button" class="w-3 h-3 rounded-full bg-primary" aria-current="false" aria-label="Slide 5"
-                        data-carousel-slide-to="4"></button>
+                    @foreach ($banners as $key => $banner)
+                        <button type="button" class="w-3 h-3 rounded-full bg-primary" aria-current="true"
+                            aria-label="Slide {{ $key + 1 }}" data-carousel-slide-to="{{ $key }}"></button>
+                    @endforeach
                 </div>
                 <!-- Slider controls -->
                 <button type="button"
@@ -76,11 +52,23 @@
     </section>
 
     <div class="flex justify-center my-3">
-        <div class="grid w-11/12 grid-cols-2 px-4 py-2 bg-white border shadow-lg rounded-xl md:w-10/12 gap-x-2">
+        <form action="{{ route('browse') }}" method="GET"
+            class="grid w-11/12 grid-cols-3 px-4 py-2 bg-white border shadow-sm shadow-secondary rounded-xl md:w-8/12 gap-x-2">
+            <label for="search" class="block mb-2 text-lg font-medium text-slate-600 col-span-full sm:col-span-1">
+                Cari Destinasi
+                <div class="flex">
+                    <div
+                        class="flex items-center px-2 py-3 border rounded-l border-secondary focus:ring-primary focus:border-primary">
+                        <i class="fa-solid fa-search text-secondary"></i>
+                    </div>
+                    <input type="text" id="search" placeholder="Cari Destinasi" name="name"
+                        class="block w-full px-3 py-2 text-base border border-l-0 rounded rounded-l-none text-secondary border-secondary focus:ring-primary focus:border-primary">
+                </div>
+            </label>
             <label for="category" class="block mb-2 text-lg font-medium text-slate-600 col-span-full sm:col-span-1">
                 Kategori
-                <select id="category"
-                    class="block w-full px-3 py-2 text-base text-white border rounded bg-sky-400 border-secondary focus:ring-blue-500 focus:border-blue-500"
+                <select id="category" name="category"
+                    class="block w-full px-3 py-2 text-base border rounded text-secondary border-secondary focus:ring-primary focus:border-primary"
                     x-model="type">
                     <option selected value="Semua">Semua Kategori</option>
                     @foreach ($type as $item)
@@ -88,27 +76,45 @@
                     @endforeach
                 </select>
             </label>
-            {{-- <label for="category" class="block mb-2 text-lg font-medium text-slate-600 col-span-full sm:col-span-1">
-            Urutkan Berdasar
-            <select id="category" class="block w-full px-3 py-2 text-base text-white border rounded bg-sky-400 border-secondary focus:ring-blue-500 focus:border-blue-500">
-                <option selected value="Nama">Nama</option>
-                <option value="Rating">Rating</option>
-            </select>
-        </label> --}}
-            <label for="region" class="block mb-2 text-lg font-medium text-slate-600 col-span-full sm:col-span-1">
-                Wilayah
-                <select id="region"
-                    class="block w-full px-3 py-2 text-base text-white border rounded bg-sky-400 border-secondary focus:ring-blue-500 focus:border-blue-500"
-                    x-model="region">
-                    <option selected value="Semua">Semua Wilayah</option>
-                    <option value="Sibolga">Sibolga</option>
-                    <option value="Tapanuli Tengah">Tapanuli Tengah</option>
-                </select>
-            </label>
-        </div>
+            <div class="flex items-end px-6 mb-3">
+                <button type="submit"
+                    class="w-full px-3 py-2 font-bold text-white transition-all ease-in-out rounded bg-secondary hover:bg-primary">Telusuri</button>
+            </div>
+        </form>
     </div>
 
-    <div class="flex justify-center my-3">
+    <section id="gallery" class="px-6 py-4 my-4 bg-primary">
+        <h1 class="my-8 text-3xl font-bold text-center text-white">Galeri Pariwisata Tapsel</h1>
+        <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+            <div class="overflow-hidden rounded-lg">
+                <img class="h-auto max-w-full transition-all duration-500 ease-in-out rounded-lg hover:scale-125"
+                    src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
+            </div>
+            <div class="overflow-hidden rounded-lg">
+                <img class="h-auto max-w-full transition-all duration-500 ease-in-out rounded-lg hover:scale-125"
+                    src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+            </div>
+            <div class="overflow-hidden rounded-lg">
+                <img class="h-auto max-w-full transition-all duration-500 ease-in-out rounded-lg hover:scale-125"
+                    src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
+            </div>
+            <div class="overflow-hidden rounded-lg">
+                <img class="h-auto max-w-full transition-all duration-500 ease-in-out rounded-lg hover:scale-125"
+                    src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
+            </div>
+            <div class="overflow-hidden rounded-lg">
+                <img class="h-auto max-w-full transition-all duration-500 ease-in-out rounded-lg hover:scale-125"
+                    src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
+            </div>
+            <div class="overflow-hidden rounded-lg">
+                <img class="h-auto max-w-full transition-all duration-500 ease-in-out rounded-lg hover:scale-125"
+                    src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
+            </div>
+        </div>
+
+    </section>
+
+    {{-- <div class="flex justify-center my-3">
         <div class="grid w-11/12 grid-cols-3 md:w-10/12 gap-x-4 gap-y-3">
             @foreach ($destinations as $data)
                 @foreach ($covers as $cover)
@@ -121,7 +127,7 @@
                 @endforeach
             @endforeach
         </div>
-    </div>
+    </div> --}}
 @endsection
 @section('scripts')
     <script>

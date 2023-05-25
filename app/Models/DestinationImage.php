@@ -14,4 +14,9 @@ class DestinationImage extends Model
         'url',
         'is_cover',
     ];
+
+    public function destination()
+    {
+        return $this->belongsTo(Destination::class, 'dest_id');
+    }
 }

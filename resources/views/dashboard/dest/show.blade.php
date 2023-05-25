@@ -46,7 +46,8 @@
                                     {{-- <div class="w-10 p-2 border-2 rounded-full aspect-square"> --}}
                                     @if ($review->user->avatar)
                                         <img src="{{ $review->user->avatar }}"
-                                            class="w-10 h-10 border-2 rounded-full aspect-square">
+                                            class="w-10 h-10 border-2 rounded-full aspect-square" loading="lazy"
+                                            onerror="this.onerror=null;this.src='{{ asset('images/avatar.png') }}';">
                                     @else
                                         <img src="{{ asset('images/avatar.png') }}"
                                             class="w-10 h-10 border-2 rounded-full aspect-square">

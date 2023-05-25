@@ -18,10 +18,32 @@ class HomeController extends Controller
     {
         $destinations = Destination::with(['destType'])->orderBy("name", "asc")->get();
         $covers = DestinationImage::where('is_cover', 1)->get();
+        $banners = DestinationImage::with(['destination'])->inRandomOrder()->limit(7)->get();
         $type = DestinationType::all();
 
         $galleries = DestinationImage::limit(15)->inRandomOrder()->get();
-        return view('home', compact('destinations', 'covers', 'type', 'galleries'));
+        return view('home', compact('destinations', 'covers', 'type', 'galleries', 'banners'));
+    }
+
+    public function browse(Request $request)
+    {
+        $destinations = Destination::with(['destType']);
+
+        if ($request->name) {
+            $destinations->where('name', 'LIKE', '%' . $request->name . '%');
+        }
+
+        if ($request->category) {
+            $destinations->whereHas('destType', function ($query) use ($request) {
+                $query->where('name', $request->category);
+            });
+        }
+
+        $destinations = $destinations->orderBy("name", "asc")->get();
+
+        ddd($destinations);
+
+        return view('browse', compact('destinations'));
     }
 
     /**
