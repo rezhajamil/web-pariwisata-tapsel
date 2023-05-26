@@ -78,7 +78,8 @@
                 <div class="grid grid-cols-1 gap-3 mt-2 sm:grid-cols-2">
                     @foreach ($destination->images as $image)
                         <label class="relative h-64 overflow-hidden border-2 border-purple-700 rounded">
-                            <img src="{{ asset('storage/' . $image->url) }}" />
+                            <img src="{{ asset('storage/' . $image->url) }}"
+                                class="object-cover object-center w-full h-64" />
                             <input type="checkbox" name="delete_image[]" id="image{{ $image->id }}" class="hidden peer"
                                 value="{{ $image->id }}">
                             <div

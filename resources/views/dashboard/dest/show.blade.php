@@ -30,7 +30,8 @@
                 <div id="image-grid" class="grid grid-cols-1 gap-3 mt-2 sm:grid-cols-2">
                     @foreach ($images as $image)
                         <div class="relative h-64 overflow-hidden border-2 border-purple-700 rounded">
-                            <img src="{{ asset('storage/' . $image->url) }}" alt="" class="object-cover">
+                            <img src="{{ asset('storage/' . $image->url) }}" alt=""
+                                class="object-cover object-center w-full h-64">
                         </div>
                     @endforeach
                 </div>
