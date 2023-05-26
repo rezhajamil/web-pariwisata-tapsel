@@ -8,7 +8,7 @@
                     @foreach ($banners as $key => $banner)
                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
                             <img src="{{ asset('storage/' . $banner->url) }}"
-                                class="absolute block object-cover w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                class="absolute block object-cover w-full sm:h-[400px] md:h-[600px] h-72 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                                 alt="{{ $banner->destination->name }}">
                         </div>
                     @endforeach
@@ -76,7 +76,7 @@
                     @endforeach
                 </select>
             </label>
-            <div class="flex items-end px-6 mb-3">
+            <div class="flex items-end mb-3 sm:px-6 col-span-full sm:col-span-1">
                 <button type="submit"
                     class="w-full px-3 py-2 font-bold text-white transition-all ease-in-out rounded bg-secondary hover:bg-primary">Telusuri</button>
             </div>
@@ -84,7 +84,8 @@
     </div>
 
     <section id="gallery" class="px-6 py-4 my-4 bg-primary">
-        <h1 class="my-8 text-3xl font-bold text-center text-white">Galeri Pariwisata Tapsel</h1>
+        <h1 class="my-8 text-3xl font-bold text-center text-white">Galeri <span class="block sm:inline-block">Pariwisata
+                Tapsel</span></h1>
         <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
             <div class="overflow-hidden rounded-lg">
                 <img class="h-auto max-w-full transition-all duration-500 ease-in-out rounded-lg hover:scale-125"

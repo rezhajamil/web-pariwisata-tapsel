@@ -2208,6 +2208,10 @@ select {
     display: block;
   }
 
+  .sm\:inline-block {
+    display: inline-block;
+  }
+
   .sm\:flex {
     display: flex;
   }
