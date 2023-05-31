@@ -16,7 +16,7 @@ class Destination extends Model
         return $this->belongsTo(DestinationType::class, 'type');
     }
 
-    public function review()
+    public function reviews()
     {
         return $this->hasMany(DestinationReview::class, 'dest_id');
     }
