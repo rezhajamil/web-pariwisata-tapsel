@@ -114,7 +114,7 @@
             </div>
             <div
                 class="flex-col items-center justify-center hidden w-1/4 px-3 py-2 rounded-lg shadow gap-y-2 h-fit lg:flex ">
-                <a href="{{ $destination->maps_url }}"
+                <a href="{{ $destination->maps_url }}" target="_blank"
                     class="flex items-center justify-center w-full p-2 transition bg-green-600 rounded hover:bg-green-800 btn-booking">
                     <i class="mr-2 text-xl text-white transition fa-solid fa-map-location-dot"></i>
                     <span class="text-lg font-semibold text-white transition">
@@ -127,7 +127,7 @@
     <div
         class="fixed bottom-0 lg:hidden flex justify-evenly items-center w-full space-x-2 px-3 py-2 bg-white drop-shadow-[18px_-18px_28px_#d5d5d5]">
         <button class="w-1/2 p-2 transition bg-green-600 rounded hover:bg-green-800 btn-booking"
-            onclick="location.href='{{ $destination->maps_url }}'">
+            onclick="location.href='{{ $destination->maps_url }}'" target="_blank">
             <i class="mr-2 text-white transition fa-solid fa-map-location-dot"></i>
             <span class="text-lg font-semibold text-white transition">
                 Lihat Di Maps
