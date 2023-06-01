@@ -70,7 +70,7 @@
                 <select id="category" name="category"
                     class="block w-full px-3 py-2 text-base border rounded text-emerald-500 border-emerald-500 focus:ring-green-600 focus:border-green-600"
                     x-model="type">
-                    <option selected value="Semua">Semua Kategori</option>
+                    <option selected value="">Semua Kategori</option>
                     @foreach ($type as $item)
                         <option value="{{ $item->name }}">{{ $item->name }}</option>
                     @endforeach

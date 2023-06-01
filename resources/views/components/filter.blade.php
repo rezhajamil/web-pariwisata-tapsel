@@ -24,7 +24,7 @@
                         <div class="w-fit">
                             <input type="checkbox" name="category[]" id="type{{ $key }}"
                                 value="{{ $type->name }}" class="hidden peer"
-                                {{ in_array($type->name, request()->get('category')) ? 'checked' : '' }}>
+                                {{ is_array(request()->get('category')) && in_array($type->name, request()->get('category')) ? 'checked' : '' }}>
                             <label for="type{{ $key }}"
                                 class="relative flex items-center justify-between px-3 py-2 overflow-hidden border rounded text-emerald-600 border-emerald-600 flex-nowrap peer-checked:bg-emerald-600 peer-checked:text-white">
                                 <p class="leading-none whitespace-nowrap">

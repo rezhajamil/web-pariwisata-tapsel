@@ -57,7 +57,7 @@
                             <div id="drop-wisata"
                                 class="absolute left-0 z-50 hidden overflow-hidden bg-white rounded-md shadow-md h-fit">
                                 @foreach ($types as $type)
-                                    <a href="{{ route('browse', ['category' => $type->name]) }}"
+                                    <a href="{{ route('browse', ['category' => [$type->name]]) }}"
                                         class="inline-block w-full px-8 py-2 font-semibold transition-all border-b whitespace-nowrap text-gray-dark hover:bg-slate-300">
                                         {{ $type->name }}
                                     </a>
