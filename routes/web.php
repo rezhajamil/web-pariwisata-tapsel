@@ -27,6 +27,7 @@ Route::get('login/callback', ([UserController::class, 'login_callback']))->name(
 
 Route::middleware('auth')->group(
     function () {
+        Route::post('store_review', [HomeController::class, 'store_review']);
         Route::prefix('admin')->name('admin.')->middleware('ensureRole:admin')->group(function () {
             Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
             Route::resource('destination', DestinationController::class);

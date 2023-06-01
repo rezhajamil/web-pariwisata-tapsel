@@ -1,4 +1,4 @@
-<div class="bg-primary">
+<div class="bg-green-600">
     <div>
         <div class="relative">
             <!-- For md screen size -->
@@ -35,7 +35,7 @@
             <!-- For md screen size -->
 
             <!-- For large screens -->
-            <div class="px-6 py-4 bg-primary">
+            <div class="px-6 py-4 bg-green-600">
                 <div class="flex items-center justify-between mx-auto space-x-4">
                     <h1 class="pr-3 text-gray-800 border-collapse cursor-pointer md:border-r-2">
                         <span class="text-xl font-extrabold text-white uppercase whitespace-nowrap">Pariwisata
@@ -57,7 +57,7 @@
                             <div id="drop-wisata"
                                 class="absolute left-0 z-50 hidden overflow-hidden bg-white rounded-md shadow-md h-fit">
                                 @foreach ($types as $type)
-                                    <a href="#"
+                                    <a href="{{ route('browse', ['category' => $type->name]) }}"
                                         class="inline-block w-full px-8 py-2 font-semibold transition-all border-b whitespace-nowrap text-gray-dark hover:bg-slate-300">
                                         {{ $type->name }}
                                     </a>
@@ -67,20 +67,20 @@
                     </ul>
                     @auth
                         <a href="{{ route('logout') }}"
-                            class="hidden px-3 py-2 font-bold transition-all bg-white rounded-md cursor-pointer md:block whitespace-nowrap hover:bg-gray-200 text-primary">
+                            class="hidden px-3 py-2 font-bold text-green-600 transition-all bg-white rounded-md cursor-pointer md:block whitespace-nowrap hover:bg-gray-200">
                             <i class="mr-2 fa-solid fa-right-from-bracket"></i>
                             SIGN OUT
                         </a>
                     @else
                         <a href="{{ route('login') }}"
-                            class="hidden px-3 py-2 font-bold transition-all bg-white rounded-md cursor-pointer md:block whitespace-nowrap hover:bg-gray-200 text-primary">
+                            class="hidden px-3 py-2 font-bold text-green-600 transition-all bg-white rounded-md cursor-pointer md:block whitespace-nowrap hover:bg-gray-200">
                             <i class="mr-2 fa-brands fa-google"></i>
                             SIGN IN
                         </a>
                     @endauth
                     <button id="open-menu"
                         class="block px-3 py-2 transition-all bg-white rounded-md cursor-pointer md:hidden aspect-square hover:bg-gray-200">
-                        <i class="text-lg fa-solid fa-bars text-primary"></i>
+                        <i class="text-lg text-green-600 fa-solid fa-bars"></i>
                     </button>
                 </div>
             </div>
@@ -89,24 +89,24 @@
                 <div class="flex items-center justify-between p-4 pb-4 border-b border-gray-200">
                     @auth
                         <a href="{{ route('logout') }}"
-                            class="hidden px-3 py-2 font-bold transition-all bg-white rounded-md cursor-pointer md:block whitespace-nowrap hover:bg-gray-200 text-primary">
+                            class="hidden px-3 py-2 font-bold text-green-600 transition-all bg-white rounded-md cursor-pointer md:block whitespace-nowrap hover:bg-gray-200">
                             <i class="mr-2 fa-solid fa-right-from-bracket"></i>
                             SIGN OUT
                         </a>
                     @else
                         <a href="{{ route('login') }}"
-                            class="px-3 py-2 font-bold text-white transition-all rounded-md cursor-pointer bg-primary md:hidden whitespace-nowrap hover:bg-gray-200">
+                            class="px-3 py-2 font-bold text-white transition-all bg-green-600 rounded-md cursor-pointer md:hidden whitespace-nowrap hover:bg-gray-200">
                             <i class="mr-2 fa-brands fa-google"></i>
                             SIGN IN
                         </a>
                     @endauth
 
                     <button id="close-menu" aria-label="close menu"
-                        class="p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary">
-                        <i class="text-lg fa-solid fa-xmark text-primary"></i>
+                        class="p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-600">
+                        <i class="text-lg text-green-600 fa-solid fa-xmark"></i>
                     </button>
                 </div>
-                <div class="p-4 bg-primary">
+                <div class="p-4 bg-green-600">
                     <ul class="flex flex-col space-y-6">
                         <li class="w-full border-b-2">
                             <a href="{{ route('home') }}"

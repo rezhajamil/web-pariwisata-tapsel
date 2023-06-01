@@ -2,8 +2,9 @@
 @section('content')
     <div class="w-full px-3 py-4 sm:px-6">
         @include('components.filter')
+        <span class="block mt-8 mb-4 text-xl font-bold text-slate-600">Hasil Pencarian Destinasi Wisata</span>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-6">
-            @foreach ($destinations as $key => $data)
+            @forelse ($destinations as $key => $data)
                 <div class="flex items-center justify-between w-full shadow-lg">
                     <div class="flex flex-col items-start w-full bg-white rounded-md shadow xl:flex-row lg:items-center">
                         <div class="w-full h-64 overflow-hidden xl:w-3/5">
@@ -11,7 +12,7 @@
                                 class="object-cover object-center w-full h-64">
                         </div>
                         <div
-                            class="flex flex-col justify-between w-full px-2 py-3 border-t h-fit sm:px-4 bg-primary xl:w-2/5 xl:h-64 xl:border-t-0 xl:border-r xl:border-l xl:rounded-r">
+                            class="flex flex-col justify-between w-full px-2 py-3 border-t bg-emerald-600 h-fit sm:px-4 xl:w-2/5 xl:h-64 xl:border-t-0 xl:border-r xl:border-l xl:rounded-r">
                             <div class="">
 
                                 <span class="block font-bold text-white md:text-lg lg:text-xl">{{ $data->name }}</span>
@@ -45,14 +46,17 @@
                                         @endif
                                     @endfor
                                 </div>
-                                <a href="" class="block font-semibold text-white underline">Selengkapnya <i
+                                <a href="{{ route('destination.show', $data->id) }}"
+                                    class="block font-semibold text-white underline">Selengkapnya <i
                                         class="ml-2 text-sm fa-solid fa-up-right-from-square"></i></a>
                             </div>
 
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <span class="text-sm italic font-semibold text-gray-500 col-span-full">Tidak Ada Destinasi Ditemukan</span>
+            @endforelse
         </div>
     </div>
 @endsection

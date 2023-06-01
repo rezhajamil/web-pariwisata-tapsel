@@ -27,7 +27,8 @@ class HomeController extends Controller
 
     public function browse(Request $request)
     {
-        $destinations = Destination::with(['destType', 'images', 'reviews']);
+        // ddd($request);
+        $destinations = Destination::with(['destType', 'images', 'reviews.user']);
 
         if ($request->name) {
             $destinations->where('name', 'LIKE', '%' . $request->name . '%');
@@ -35,7 +36,7 @@ class HomeController extends Controller
 
         if ($request->category && $request->category != 'Semua') {
             $destinations->whereHas('destType', function ($query) use ($request) {
-                $query->where('name', $request->category);
+                $query->whereIn('name', $request->category);
             });
         }
 
@@ -86,7 +87,8 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        //
+        $destination = Destination::with(['destType', 'reviews', 'images'])->find($id);
+        return view('detail', compact('destination'));
     }
 
     /**
