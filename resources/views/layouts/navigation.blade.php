@@ -36,12 +36,12 @@
 
             <!-- For large screens -->
             <div class="px-6 py-4 bg-primary">
-                <div class="container flex items-center justify-around mx-auto space-x-4">
+                <div class="flex items-center justify-between mx-auto space-x-4">
                     <h1 class="pr-3 text-gray-800 border-collapse cursor-pointer md:border-r-2">
                         <span class="text-xl font-extrabold text-white uppercase whitespace-nowrap">Pariwisata
                             Tapsel</span>
                     </h1>
-                    <ul class="items-center justify-start hidden w-8/12 space-x-8 md:flex">
+                    <ul class="items-center justify-start hidden w-full space-x-8 md:flex">
                         <li>
                             <a href="{{ route('home') }}"
                                 class="text-base font-bold text-white transition-all hover:text-gray-medium focus:outline-none hover:underline">

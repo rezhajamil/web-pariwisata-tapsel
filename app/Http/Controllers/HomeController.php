@@ -40,6 +40,7 @@ class HomeController extends Controller
         }
 
         $destinations = $destinations->orderBy("name", "asc")->get();
+        $types = DestinationType::orderBy('name')->get();
 
         foreach ($destinations as $key => $data) {
             $rate = 0;
@@ -54,7 +55,7 @@ class HomeController extends Controller
 
         // ddd($destinations);
 
-        return view('browse', compact('destinations'));
+        return view('browse', compact('destinations', 'types'));
     }
 
     /**

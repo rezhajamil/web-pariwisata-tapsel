@@ -1,26 +1,31 @@
 @extends('layouts.app')
 @section('content')
     <div class="w-full px-3 py-4 sm:px-6">
+        @include('components.filter')
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-6">
             @foreach ($destinations as $key => $data)
                 <div class="flex items-center justify-between w-full shadow-lg">
-                    <div class="flex flex-col items-start w-full bg-white rounded-md shadow lg:flex-row lg:items-center">
-                        <div class="w-full h-64 overflow-hidden lg:w-3/5">
+                    <div class="flex flex-col items-start w-full bg-white rounded-md shadow xl:flex-row lg:items-center">
+                        <div class="w-full h-64 overflow-hidden xl:w-3/5">
                             <img src="{{ asset('storage/' . $data->images[0]->url) }}" alt=""
-                                class="object-cover object-center h-64">
+                                class="object-cover object-center w-full h-64">
                         </div>
                         <div
-                            class="flex flex-col justify-between w-full h-24 px-2 py-3 border-t sm:px-4 bg-primary lg:w-2/5 lg:h-64 lg:border-t-0 lg:border-r lg:border-l lg:rounded-r">
+                            class="flex flex-col justify-between w-full px-2 py-3 border-t h-fit sm:px-4 bg-primary xl:w-2/5 xl:h-64 xl:border-t-0 xl:border-r xl:border-l xl:rounded-r">
                             <div class="">
 
                                 <span class="block font-bold text-white md:text-lg lg:text-xl">{{ $data->name }}</span>
-                                <span class="block mt-1 text-sm text-white">
+                                <div class="flex mt-1 text-base text-white sm:text-sm">
                                     <i class="mr-2 fa-solid fa-mountain-sun"></i>{{ $data->destType->name }}
-                                </span>
+                                </div>
+                                <div class="flex mt-1 text-base text-white sm:text-sm">
+                                    <i class="mr-2 fa-solid fa-map-location-dot"></i>{{ $data->address }}
+                                </div>
 
                             </div>
-                            <div class="">
-                                <div class="flex items-center px-2 py-1 my-3 bg-white rounded-full aspect-auto w-fit">
+                            <div
+                                class="flex items-center justify-between mt-4 gap-x-3 sm:flex-col 2xl:flex-row sm:items-start">
+                                <div class="flex items-center aspect-auto w-fit">
                                     @for ($i = 1; $i <= 5; $i++)
                                         @if ($i <= $data->rate)
                                             <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor"
@@ -40,7 +45,7 @@
                                         @endif
                                     @endfor
                                 </div>
-                                <a href="" class="block mt-2 font-semibold text-white underline">Selengkapnya <i
+                                <a href="" class="block font-semibold text-white underline">Selengkapnya <i
                                         class="ml-2 text-sm fa-solid fa-up-right-from-square"></i></a>
                             </div>
 
