@@ -19,7 +19,7 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        $dests = Destination::with(['destType', 'review', 'images'])->orderBy('type')->orderBy('name')->get();
+        $dests = Destination::with(['destType', 'reviews', 'images'])->orderBy('type')->orderBy('name')->get();
         return view('dashboard.dest.index', compact('dests'));
     }
 
@@ -96,7 +96,7 @@ class DestinationController extends Controller
     public function edit(Destination $destination)
     {
         $types = DestinationType::orderBy('name')->get();
-        $destination = Destination::with(['destType', 'review.user', 'images'])->where('id', $destination->id)->first();
+        $destination = Destination::with(['destType', 'reviews.user', 'images'])->where('id', $destination->id)->first();
         return view('dashboard.dest.edit', compact('types', 'destination'));
     }
 
