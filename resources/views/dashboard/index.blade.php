@@ -7,7 +7,7 @@
             <!-- card1 -->
             <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
                 <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="flex-auto p-4">
+                    <div class="flex-auto p-4 rounded-lg shadow-lg shadow-purple-600/30 drop-shadow-xl">
                         <div class="flex flex-row -mx-3">
                             <div class="flex-none w-2/3 max-w-full px-3">
                                 <div>
@@ -31,7 +31,7 @@
             <!-- card2 -->
             <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
                 <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="flex-auto p-4">
+                    <div class="flex-auto p-4 rounded-lg shadow-lg shadow-purple-600/30 drop-shadow-xl">
                         <div class="flex flex-row -mx-3">
                             <div class="flex-none w-2/3 max-w-full px-3">
                                 <div>
@@ -55,7 +55,7 @@
             <!-- card3 -->
             <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
                 <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="flex-auto p-4">
+                    <div class="flex-auto p-4 rounded-lg shadow-lg shadow-purple-600/30 drop-shadow-xl">
                         <div class="flex flex-row -mx-3">
                             <div class="flex-none w-2/3 max-w-full px-3">
                                 <div>
