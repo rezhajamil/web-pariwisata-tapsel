@@ -14,7 +14,9 @@ class DestinationTypeController extends Controller
      */
     public function index()
     {
-        //
+        $destTypes = DestinationType::all();
+
+        return view('dashboard.destType.index', compact('destTypes'));
     }
 
     /**
@@ -24,7 +26,7 @@ class DestinationTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.destType.create');
     }
 
     /**
@@ -35,7 +37,15 @@ class DestinationTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:destination_types',
+        ]);
+
+        DestinationType::create([
+            'name' => ucwords($request->name),
+        ]);
+
+        return redirect()->route('admin.destination_type.index')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -46,8 +56,8 @@ class DestinationTypeController extends Controller
      */
     public function show(DestinationType $destinationType)
     {
-        //
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -57,7 +67,9 @@ class DestinationTypeController extends Controller
      */
     public function edit(DestinationType $destinationType)
     {
-        //
+        $destType = $destinationType;
+
+        return view('dashboard.destType.edit', compact('destType'));
     }
 
     /**
@@ -69,7 +81,14 @@ class DestinationTypeController extends Controller
      */
     public function update(Request $request, DestinationType $destinationType)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $destinationType->name = ucwords($request->name);
+        $destinationType->save();
+
+        return redirect()->route('admin.destination_type.index')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -80,6 +99,8 @@ class DestinationTypeController extends Controller
      */
     public function destroy(DestinationType $destinationType)
     {
-        //
+        $destinationType->delete();
+
+        return redirect()->route('admin.destination_type.index')->with('success', 'Data berhasil dihapus');
     }
 }

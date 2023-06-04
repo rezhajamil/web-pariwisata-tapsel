@@ -21,7 +21,19 @@ class HomeController extends Controller
         $banners = DestinationImage::with(['destination'])->inRandomOrder()->limit(7)->get();
         $type = DestinationType::all();
 
-        $galleries = DestinationImage::limit(15)->inRandomOrder()->get();
+        $galleries = DestinationImage::with(['destination.reviews'])->limit(15)->inRandomOrder()->get();
+
+        foreach ($galleries as $key => $gallery) {
+            $total_rate = 0;
+            foreach ($gallery->destination->reviews as $idx => $review) {
+                $total_rate += $review->rate;
+            }
+
+            $gallery->rate = $total_rate > 0 ? intval(floor($total_rate / count($gallery->destination->reviews))) : 0;
+        }
+
+        // ddd($galleries);
+
         return view('home', compact('destinations', 'covers', 'type', 'galleries', 'banners'));
     }
 

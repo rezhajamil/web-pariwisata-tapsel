@@ -14,7 +14,7 @@ class CreateAddForeignKeysToDestinationsTable extends Migration
     public function up()
     {
         Schema::table('destinations', function (Blueprint $table) {
-            $table->foreign('type')->references('id')->on('destination_types')->onUpdate('cascade');
+            $table->foreign('type')->references('id')->on('destination_types')->onUpdate('cascade')->onDelete('null');
         });
     }
 

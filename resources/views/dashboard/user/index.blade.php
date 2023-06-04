@@ -3,7 +3,7 @@
     <div class="flex flex-wrap -mx-3">
         <div class="flex-none w-full max-w-full px-3">
             <div
-                class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+                class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid drop-shadow-2xl shadow-soft-xl rounded-2xl bg-clip-border">
                 <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                     <h6>Tabel Destinasi</h6>
                 </div>
@@ -31,7 +31,7 @@
                                     <tr>
                                         <td
                                             class="p-2 text-left align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <span class="text-xs font-bold leading-tight text-slate-400">
+                                            <span class="font-bold leading-tight text-slate-400">
                                                 {{ $key + 1 }}
                                             </span>
                                         </td>
@@ -45,7 +45,7 @@
                                                 </div>
                                                 <div class="flex flex-col justify-center">
                                                     <h6 class="mb-0 text-sm leading-normal">{{ $user->name }}</h6>
-                                                    <p class="mb-0 text-xs leading-tight text-slate-400">
+                                                    <p class="mb-0 leading-tight text-slate-400">
                                                         {{ $user->email }}
                                                     </p>
                                                 </div>
@@ -53,7 +53,7 @@
                                         </td>
                                         <td
                                             class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <span class="text-xs font-semibold leading-tight text-slate-400">
+                                            <span class="font-semibold leading-tight text-slate-400">
                                                 {{ date('d-M-y', strtotime($user->created_at)) }}
                                             </span>
                                         </td>

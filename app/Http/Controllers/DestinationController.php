@@ -84,6 +84,7 @@ class DestinationController extends Controller
     {
         $images = DestinationImage::where('dest_id', $destination->id)->orderBy("is_cover", "desc")->get();
         $destination = Destination::with(['destType', 'review.user', 'images'])->where('id', $destination->id)->first();
+
         return view('dashboard.dest.show', compact('destination', 'images'));
     }
 
@@ -164,6 +165,6 @@ class DestinationController extends Controller
     public function destroy(Destination $destination)
     {
         $destination->delete();
-        return redirect()->route('dashboard.dest.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('admin.destination.index')->with('success', 'Data berhasil dihapus');
     }
 }
