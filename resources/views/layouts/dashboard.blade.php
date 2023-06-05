@@ -49,7 +49,7 @@
     @auth
         <!-- sidenav  -->
         <aside
-            class="max-w-62.5 shadow-soft-xl ease-nav-brand bg-gradient-to-tl from-purple-700 from-80% !to-pink-600 z-990 fixed inset-y-0 my-4 ml-4 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 bg-white p-0 antialiased transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent">
+            class="max-w-62.5 shadow-soft-xl ease-nav-brand bg-gradient-to-tl from-purple-700 from-80% !to-pink-600 fixed inset-y-0 my-4 ml-4 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 bg-white p-0 antialiased transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent">
             <div class="h-19.5">
                 {{-- <i class="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden"
                     sidenav-close></i> --}}
@@ -164,6 +164,7 @@
 
         @yield('content')
     </main>
+    @include('components.footer')
     @yield('scripts')
 </body>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Destination;
 use App\Models\DestinationImage;
+use App\Models\DestinationReview;
 use App\Models\DestinationType;
 use Illuminate\Http\Request;
 
@@ -135,5 +136,23 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function store_review(Request $request)
+    {
+        // ddd($request);
+        $request->validate([
+            'rate' => ['required'],
+            'message' => ['required'],
+        ]);
+
+        DestinationReview::create([
+            'rate' => $request->rate,
+            'message' => $request->message,
+            'dest_id' => $request->dest_id,
+            'user_id' => auth()->user()->id,
+        ]);
+
+        return back()->with('success');
     }
 }

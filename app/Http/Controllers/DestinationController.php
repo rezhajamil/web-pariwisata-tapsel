@@ -83,7 +83,7 @@ class DestinationController extends Controller
     public function show(Destination $destination)
     {
         $images = DestinationImage::where('dest_id', $destination->id)->orderBy("is_cover", "desc")->get();
-        $destination = Destination::with(['destType', 'review.user', 'images'])->where('id', $destination->id)->first();
+        $destination = Destination::with(['destType', 'reviews.user', 'images'])->where('id', $destination->id)->first();
 
         return view('dashboard.dest.show', compact('destination', 'images'));
     }

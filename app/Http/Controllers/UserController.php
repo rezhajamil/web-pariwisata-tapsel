@@ -94,7 +94,7 @@ class UserController extends Controller
     public function login_callback(Request $request)
     {
         $callback = Socialite::driver('google')->stateless()->user();
-        // ddd($callback);
+        // ddd($callback->getAvatar());
         $data = [
             'email' => $callback->getEmail(),
             'name' => $callback->getName(),
@@ -102,8 +102,9 @@ class UserController extends Controller
             'is_admin' => 0,
             'email_verified_at' => date('Y-m-d H:i:s')
         ];
+        // ddd($data);
 
-        $user = User::firstOrCreate(['email' => $data['email']], $data);
+        $user = User::updateOrCreate(['email' => $data['email']], $data);
         Auth::login($user, true);
 
         return redirect()->intended();

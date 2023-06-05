@@ -9,6 +9,10 @@ class DestinationReview extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
+    protected $table = 'destination_reviews';
+
     public function destination()
     {
         return $this->belongsTo(Destination::class, 'dest_id');

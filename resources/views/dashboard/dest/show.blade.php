@@ -40,7 +40,7 @@
                 class="relative min-w-0 px-6 py-4 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                 <span class="text-lg font-bold">Review {{ $destination->name }}</span>
                 <table class="w-full">
-                    @foreach ($destination->review as $review)
+                    @foreach ($destination->reviews as $review)
                         <tr class="">
                             <td class="p-2 border-b-2 border-r w-fit border-b-gray-300">
                                 <div class="flex items-center gap-x-2 w-fit">
@@ -89,6 +89,7 @@
                         </tr>
                     @endforeach
                 </table>
+
             </div>
         </div>
     </div>

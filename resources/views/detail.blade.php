@@ -1,6 +1,18 @@
 @extends('layouts.app')
+@section('style')
+    <style>
+        .star-label {
+            color: gray;
+            cursor: pointer;
+        }
+
+        .star-input.checked~.star-label {
+            color: rgb(234 179 8 / var(--tw-bg-opacity));
+        }
+    </style>
+@endsection
 @section('content')
-    <section class="flex justify-center my-1 carousel md:my-3">
+    <section class="flex justify-center py-4 my-1 carousel md:my-10">
         <div id="default-carousel" class="relative w-11/12 border border-green-600 rounded-lg md:w-10/12"
             data-carousel="static">
             <!-- Carousel wrapper -->
@@ -71,12 +83,14 @@
                     <span class="mb-1 text-lg font-bold text-decoration-underline col-span-full text-prussian">Review</span>
                     <hr class="my-1 border border-gray-400">
                     @forelse ($destination->reviews as $key => $review)
+                        {{-- {{ ddd($review) }} --}}
                         <div class="flex flex-col mb-4 shadow gap-x-2 gap-y-4">
                             <div class="flex items-center gap-x-2">
                                 <img src="{{ $review->user->avatar }}" alt="review{{ $key }}"
                                     class="w-8 h-8 rounded-full aspect-square">
                                 <div class="flex flex-col">
-                                    <span class="text-xs text-gray-400">{{ date('d-m-Y', $review->created_at) }}</span>
+                                    <span
+                                        class="text-xs text-gray-400">{{ $review->created_at ? $review->created_at : '' }}</span>
                                     <span class="text-sm text-gray-500">{{ $review->user->email }}</span>
                                 </div>
                             </div>
@@ -109,8 +123,30 @@
                     @endforelse
                 </div>
                 <hr class="my-3">
-                <form action="{{ route('store_review') }}" class="flex flex-col">
-                </form>
+
+                <div class="py-3">
+                    <span class="text-lg font-bold">Berikan Ulasan Anda</span>
+                    <form action="{{ route('store_review') }}" method="POST" class="px-4 py-4 border border-gray-400">
+                        @csrf
+                        <input type="hidden" name="dest_id" value="{{ $destination->id }}">
+                        <div class="flex items-center">
+                            @for ($i = 1; $i <= 5; $i++)
+                                <div class="">
+                                    <input type="radio" id="star{{ $i }}" name="rate"
+                                        value="{{ $i }}" class="hidden star-input">
+                                    <label for="star{{ $i }}" class="star-label">
+                                        <i class="fa-solid fa-star"></i>
+                                    </label>
+                                </div>
+                            @endfor
+                        </div>
+                        <textarea name="message" id="message" cols="30" rows="5" placeholder="Ulasan Anda"
+                            class="w-full mt-4 rounded" required></textarea>
+                        <button type="submit"
+                            class="w-full py-3 font-bold text-white transition-all bg-green-600 rounded hover:bg-green-800">Kirim
+                            Ulasan</button>
+                    </form>
+                </div>
             </div>
             <div
                 class="flex-col items-center justify-center hidden w-1/4 px-3 py-2 rounded-lg shadow gap-y-2 h-fit lg:flex ">
@@ -134,4 +170,23 @@
             </span>
         </button>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.star-input').on('change', function() {
+                var selectedStarId = $(this).attr('id').substr($(this).attr('id').length - 1);
+                var allStars = $('.star-input');
+
+                allStars.removeClass('checked');
+
+                allStars.each(function() {
+                    if ($(this).attr('id').substr($(this).attr('id').length - 1) <=
+                        selectedStarId) {
+                        $(this).addClass('checked');
+                    }
+                })
+            });
+        });
+    </script>
 @endsection
