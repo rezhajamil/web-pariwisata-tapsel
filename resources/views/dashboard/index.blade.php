@@ -14,7 +14,7 @@
                                     <p class="mb-0 font-sans text-sm font-semibold leading-normal">Jumlah Destinasi
                                     </p>
                                     <h5 class="mb-0 font-bold">
-                                        15
+                                        {{ $destination }}
                                     </h5>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                                     <p class="mb-0 font-sans text-sm font-semibold leading-normal">Jumlah User
                                     </p>
                                     <h5 class="mb-0 font-bold">
-                                        50
+                                        {{ $user }}
                                     </h5>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                                     <p class="mb-0 font-sans text-sm font-semibold leading-normal">Jumlah Review
                                     </p>
                                     <h5 class="mb-0 font-bold">
-                                        50
+                                        {{ $review }}
                                     </h5>
                                 </div>
                             </div>

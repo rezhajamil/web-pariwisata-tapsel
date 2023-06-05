@@ -16,10 +16,10 @@
                             <div class="">
 
                                 <span class="block font-bold text-white md:text-lg lg:text-xl">{{ $data->name }}</span>
-                                <div class="flex mt-1 text-base text-white sm:text-sm">
+                                <div class="flex mt-1 text-sm text-white sm:text-base">
                                     <i class="mr-2 fa-solid fa-mountain-sun"></i>{{ $data->destType->name }}
                                 </div>
-                                <div class="flex mt-1 text-base text-white sm:text-sm">
+                                <div class="flex mt-1 text-sm text-white sm:text-base">
                                     <i class="mr-2 fa-solid fa-map-location-dot"></i>{{ $data->address }}
                                 </div>
 

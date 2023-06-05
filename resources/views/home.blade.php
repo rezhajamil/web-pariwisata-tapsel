@@ -71,7 +71,7 @@
             </label>
             <label for="category" class="block mb-2 text-lg font-medium text-slate-600 col-span-full sm:col-span-1">
                 Kategori
-                <select id="category" name="category"
+                <select id="category" name="category[]"
                     class="block w-full px-3 py-2 text-base border rounded text-emerald-500 border-emerald-500 focus:ring-green-600 focus:border-green-600"
                     x-model="type">
                     <option selected value="">Semua Kategori</option>

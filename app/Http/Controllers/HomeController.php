@@ -44,7 +44,7 @@ class HomeController extends Controller
         $destinations = Destination::with(['destType', 'images', 'reviews.user']);
 
         if ($request->name) {
-            $destinations->where('name', 'LIKE', '%' . $request->name . '%');
+            $destinations->where('name', 'LIKE', '%' . ucwords($request->name) . '%');
         }
 
         if ($request->category && $request->category != 'Semua') {
