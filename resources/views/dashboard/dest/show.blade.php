@@ -4,6 +4,11 @@
         <div class="flex-none w-full max-w-full px-3">
             <div
                 class="relative flex flex-col min-w-0 p-6 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+                <a href="{{ route('admin.destination.index') }}"
+                    class="inline-block px-3 py-3 mr-3 text-xs font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer w-fit bg-gradient-to-br from-slate-600 from-20% !to-gray-400 leading-pro ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">
+                    <i class="mr-2 fa-solid fa-arrow-left"></i>
+                    Kembali
+                </a>
                 <div
                     class="flex items-center justify-between w-full pb-0 mb-2 space-x-2 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                     <span class="text-lg font-bold">{{ $destination->name }}</span>

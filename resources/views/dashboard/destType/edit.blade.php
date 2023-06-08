@@ -2,6 +2,11 @@
 @section('content')
     <div class="flex flex-wrap -mx-3 gap-y-4">
         <div class="flex-none max-w-full px-3 w-fit">
+            <a href="{{ route('admin.destination_type.index') }}"
+                class="inline-block px-3 py-3 mx-3 text-xs font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer w-fit bg-gradient-to-br from-slate-600 from-20% !to-gray-400 leading-pro ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">
+                <i class="mr-2 fa-solid fa-arrow-left"></i>
+                Kembali
+            </a>
             <div
                 class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid drop-shadow-2xl shadow-soft-xl rounded-2xl bg-clip-border">
                 <div
