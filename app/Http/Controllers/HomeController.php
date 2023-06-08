@@ -46,8 +46,8 @@ class HomeController extends Controller
         if ($request->name) {
             $destinations->where('name', 'LIKE', '%' . ucwords($request->name) . '%');
         }
-
-        if ($request->category && $request->category != 'Semua') {
+        // ddd($request->category);
+        if ($request->category && $request->category[0]) {
             $destinations->whereHas('destType', function ($query) use ($request) {
                 $query->whereIn('name', $request->category);
             });

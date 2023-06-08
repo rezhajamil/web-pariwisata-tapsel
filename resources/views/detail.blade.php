@@ -87,7 +87,8 @@
                         <div class="flex flex-col mb-4 shadow gap-x-2 gap-y-4">
                             <div class="flex items-center gap-x-2">
                                 <img src="{{ $review->user->avatar }}" alt="review{{ $key }}"
-                                    class="w-8 h-8 rounded-full aspect-square">
+                                    class="w-8 h-8 rounded-full aspect-square"
+                                    onerror="this.onerror=null;this.src='{{ asset('images/avatar.png') }}';">
                                 <div class="flex flex-col">
                                     <span
                                         class="text-xs text-gray-400">{{ $review->created_at ? $review->created_at : '' }}</span>
@@ -140,8 +141,14 @@
                                 </div>
                             @endfor
                         </div>
+                        @error('rate')
+                            <span class="text-xs text-red-600">{{ $message }}</span>
+                        @enderror
                         <textarea name="message" id="message" cols="30" rows="5" placeholder="Ulasan Anda"
                             class="w-full mt-4 rounded" required></textarea>
+                        @error('message')
+                            <span class="text-xs text-red-600">{{ $message }}</span>
+                        @enderror
                         <button type="submit"
                             class="w-full py-3 font-bold text-white transition-all bg-green-600 rounded hover:bg-green-800">Kirim
                             Ulasan</button>

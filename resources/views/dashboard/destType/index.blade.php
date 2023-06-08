@@ -58,7 +58,7 @@
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" href=""
-                                                    class="text-sm font-semibold leading-tight text-purple-700">
+                                                    class="text-sm font-semibold leading-tight text-red-700">
                                                     Hapus </button>
                                             </form>
                                         </td>

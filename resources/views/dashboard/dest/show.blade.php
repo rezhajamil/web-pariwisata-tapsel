@@ -1,5 +1,10 @@
 @extends('layouts.dashboard')
 @section('content')
+    @if (session('success'))
+        <div alert
+            class="relative w-1/2 p-3 mx-auto mb-4 text-white border border-solid rounded-lg bg-gradient-to-tl from-green-600 to-lime-400 border-lime-300">
+            {{ session('success') }}</div>
+    @endif
     <div class="flex flex-wrap -mx-3 gap-y-4">
         <div class="flex-none w-full max-w-full px-3">
             <div
@@ -91,6 +96,16 @@
                             <td class="p-2 border-b-2 border-b-gray-300">
                                 {!! $review->message !!}
                             </td>
+                            <td class="p-2 border-b-2 border-b-gray-300">
+                                <form action="{{ route('admin.destination_review.destroy', $review->id) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" href=""
+                                        class="text-sm font-semibold leading-tight text-red-700">
+                                        Hapus </button>
+                                </form>
+                            </td>
+
                         </tr>
                     @endforeach
                 </table>

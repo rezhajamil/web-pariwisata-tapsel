@@ -37,6 +37,9 @@
                                         Alamat</th>
                                     <th
                                         class="px-3 py-3 text-xs font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        Jumlah Review</th>
+                                    <th
+                                        class="px-3 py-3 text-xs font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                         Link GMaps</th>
                                     <th
                                         class="px-3 py-3 text-xs font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
@@ -61,6 +64,10 @@
                                         <td
                                             class="px-3 py-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                             <span>{{ $dest->address }}</span>
+                                        </td>
+                                        <td
+                                            class="px-3 py-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                            <span>{{ count($dest->reviews) }}</span>
                                         </td>
                                         <td
                                             class="px-3 py-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
@@ -89,7 +96,7 @@
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" href=""
-                                                    class="text-sm font-semibold leading-tight text-purple-700">
+                                                    class="text-sm font-semibold leading-tight text-red-700">
                                                     Hapus </button>
                                             </form>
                                         </td>

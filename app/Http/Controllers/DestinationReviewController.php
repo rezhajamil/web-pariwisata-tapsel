@@ -80,6 +80,7 @@ class DestinationReviewController extends Controller
      */
     public function destroy(DestinationReview $destinationReview)
     {
-        //
+        $destinationReview->delete();
+        return redirect()->route('admin.destination.show', $destinationReview->dest_id)->with('success', 'Review berhasil dihapus');
     }
 }

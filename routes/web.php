@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\DestinationImageController;
+use App\Http\Controllers\DestinationReviewController;
 use App\Http\Controllers\DestinationTypeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -35,6 +36,7 @@ Route::middleware('auth')->group(
             Route::resource('destination', DestinationController::class);
             Route::resource('destination_type', DestinationTypeController::class);
             Route::resource('destination_image', DestinationImageController::class);
+            Route::resource('destination_review', DestinationReviewController::class);
             Route::put('destination_image/change_cover/{dest_id}', [DestinationImageController::class, 'changeCover'])->name('destination_image.changeCover');
             Route::post('destination_image/delete_image', [DestinationImageController::class, 'deleteImage'])->name('destination_image.deleteImage');
             Route::resource('dashboard', DashboardController::class);
