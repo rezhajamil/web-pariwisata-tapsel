@@ -84,7 +84,7 @@
                     <hr class="my-1 border border-gray-400">
                     @forelse ($destination->reviews as $key => $review)
                         {{-- {{ ddd($review) }} --}}
-                        <div class="flex flex-col mb-4 shadow gap-x-2 gap-y-4">
+                        <div class="flex flex-col mb-4 border-b gap-x-2 gap-y-4">
                             <div class="flex items-center gap-x-2">
                                 <img src="{{ $review->user->avatar }}" alt="review{{ $key }}"
                                     class="w-8 h-8 rounded-full aspect-square"

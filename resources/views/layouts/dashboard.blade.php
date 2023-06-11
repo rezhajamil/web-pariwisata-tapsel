@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
     <title>Dashboard</title>
     <!--     Fonts and icons     -->
+    <link rel="icon" href="{{ asset('images/logo-tapselk.png') }}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
@@ -150,7 +151,10 @@
 
         @yield('content')
     </main>
-    @include('components.footer')
+    @isset($plain)
+    @else
+        @include('components.footer')
+    @endisset
     @yield('scripts')
 </body>
 

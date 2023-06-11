@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.dashboard', ['plain' => true])
 @section('content')
     <section>
         <div
