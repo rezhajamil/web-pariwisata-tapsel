@@ -1,5 +1,10 @@
 @extends('layouts.dashboard')
 @section('content')
+    @if (session('success'))
+        <div alert
+            class="relative w-1/2 p-3 mx-auto mb-4 text-white border border-solid rounded-lg bg-gradient-to-tl from-green-600 to-lime-400 border-lime-300">
+            {{ session('success') }}</div>
+    @endif
     <!-- cards -->
     <div class="w-full px-6 py-6 mx-auto">
         <!-- row 1 -->

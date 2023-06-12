@@ -6,6 +6,7 @@ use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
@@ -110,5 +111,23 @@ class UserController extends Controller
         Auth::login($user, true);
 
         return redirect()->intended();
+    }
+
+    public function edit_password()
+    {
+        return view('auth.edit_password');
+    }
+
+    public function update_password(Request $request)
+    {
+        $request->validate([
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $user = auth()->user();
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return redirect()->route('admin.dashboard.index')->with('success', 'Berhasil Mengubah Password');
     }
 }

@@ -31,6 +31,9 @@ Route::middleware('auth')->group(
     function () {
         Route::post('store_review', [HomeController::class, 'store_review'])->name('store_review');
 
+        Route::get('edit_password', [UserController::class, 'edit_password'])->name('edit_password');
+        Route::put('update_password', [UserController::class, 'update_password'])->name('update_password');
+
         Route::prefix('admin')->name('admin.')->middleware('ensureRole:admin')->group(function () {
             Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
             Route::resource('destination', DestinationController::class);

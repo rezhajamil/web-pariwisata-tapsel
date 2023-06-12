@@ -92,8 +92,9 @@
                 Tapsel</span></h1>
         <div class="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-3">
             @foreach ($galleries as $key => $gallery)
-                <div class="relative overflow-hidden transition-all rounded-lg hover:shadow-xl shadow-emerald-500 group">
-                    <img class="h-full max-w-full transition-all duration-500 ease-in-out rounded-lg hover:scale-105"
+                <div
+                    class="relative overflow-hidden h-[400px] transition-all rounded-lg hover:shadow-xl shadow-emerald-500 group">
+                    <img class="w-full h-[400px] transition-all duration-500 ease-in-out rounded-lg hover:scale-105"
                         src="{{ asset('storage/' . $gallery->url) }}" loading="lazy">
                     <div
                         class="absolute bottom-0 left-0 flex flex-col justify-end w-full h-full px-4 py-6 space-y-3 transition-all duration-500 ease-in-out translate-y-full bg-black/20 group-hover:-translate-y-0">
