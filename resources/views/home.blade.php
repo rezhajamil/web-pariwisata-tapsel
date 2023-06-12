@@ -87,7 +87,7 @@
         </form>
     </div>
 
-    <section id="gallery" class="px-6 py-4 my-4 bg-green-600">
+    <section id="gallery" class="px-6 py-4 mt-4 bg-green-600">
         <h1 class="my-8 text-3xl font-bold text-center text-white">Galeri <span class="block sm:inline-block">Pariwisata
                 Tapsel</span></h1>
         <div class="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-3">
@@ -128,7 +128,52 @@
                 </div>
             @endforeach
         </div>
+    </section>
 
+    <section class="px-6 py-6 mb-4 bg-emerald-500" id="contact">
+        <h1 class="w-full my-8 text-3xl font-bold text-center text-white">Hubungi Kami</h1>
+        <div class="grid w-full grid-cols-1 mx-auto sm:w-8/12 sm:grid-cols-2">
+            <div class="flex flex-col px-6 gap-x-3 gap-y-2">
+                <div class="flex items-center space-x-3">
+                    <a href="" target="_blank"
+                        class="flex items-center justify-center px-3 text-white transition-all border-2 border-dotted rounded-full aspect-square hover:text-emerald-500 hover:bg-white">
+                        <i class="text-2xl align-middle fa-solid fa-location-dot"></i>
+                    </a>
+                    <span class="font-semibold text-white">Jl. Prof. Lafran pane, Komplek Perkantoran Pemda Tapsel,
+                        Sipirok</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <a href="https://wa.me/6282262783850" target="_blank"
+                        class="flex items-center justify-center px-3 text-white transition-all border-2 border-dotted rounded-full aspect-square hover:text-emerald-500 hover:bg-white">
+                        <i class="text-2xl align-middle fa-brands fa-whatsapp"></i>
+                    </a>
+                    <span class="font-semibold text-white">082262783850</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <a href="mailto:dispardatapsel@gmail.com" target="_blank"
+                        class="flex items-center justify-center px-3 text-white transition-all border-2 border-dotted rounded-full aspect-square hover:text-emerald-500 hover:bg-white">
+                        <i class="text-2xl align-middle fa-solid fa-envelope"></i>
+                    </a>
+                    <span class="font-semibold text-white">dispardatapsel@gmail.com</span>
+                </div>
+            </div>
+            <div class="flex flex-col px-6 gap-x-3 gap-y-2">
+                <div class="flex items-center space-x-3">
+                    <a href="https://youtube.com/@KETAPSELAJA2022" target="_blank"
+                        class="flex items-center justify-center px-3 text-white transition-all border-2 border-dotted rounded-full aspect-square hover:text-emerald-500 hover:bg-white">
+                        <i class="text-2xl align-middle fa-brands fa-youtube"></i>
+                    </a>
+                    <span class="font-semibold text-white">KETAPSELAJA</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <a href="https://www.instagram.com/dispardatapsel/" target="_blank"
+                        class="flex items-center justify-center px-3 text-white transition-all border-2 border-dotted rounded-full aspect-square hover:text-emerald-500 hover:bg-white">
+                        <i class="text-2xl align-middle fa-brands fa-instagram"></i>
+                    </a>
+                    <span class="font-semibold text-white">@dispardatapsel</span>
+                </div>
+            </div>
+        </div>
     </section>
 
     {{-- <div class="flex justify-center my-3">
