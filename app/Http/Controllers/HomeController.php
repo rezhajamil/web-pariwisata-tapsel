@@ -155,4 +155,9 @@ class HomeController extends Controller
 
         return back()->with('success');
     }
+
+    public function about()
+    {
+        return view('about');
+    }
 }

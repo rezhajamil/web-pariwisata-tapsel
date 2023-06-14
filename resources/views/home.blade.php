@@ -133,28 +133,28 @@
     <section class="px-6 py-6 mb-4 bg-emerald-500" id="contact">
         <h1 class="w-full my-8 text-3xl font-bold text-center text-white">Hubungi Kami</h1>
         <div class="grid w-full grid-cols-1 mx-auto md:w-8/12 md:grid-cols-2 gap-y-2">
-            <div class="flex flex-col px-6 gap-x-3 gap-y-2">
+            <div class="flex flex-col items-end px-6 gap-x-3 gap-y-2">
                 <div class="flex items-center space-x-3">
+                    <span class="font-semibold text-white">Jl. Prof. Lafran pane, Komplek Perkantoran Pemda Tapsel,
+                        Sipirok</span>
                     <a href="" target="_blank"
                         class="flex items-center justify-center px-3 text-white transition-all border-2 border-dotted rounded-full aspect-square hover:text-emerald-500 hover:bg-white">
                         <i class="text-2xl align-middle fa-solid fa-location-dot"></i>
                     </a>
-                    <span class="font-semibold text-white">Jl. Prof. Lafran pane, Komplek Perkantoran Pemda Tapsel,
-                        Sipirok</span>
                 </div>
                 <div class="flex items-center space-x-3">
+                    <span class="font-semibold text-white">082262783850</span>
                     <a href="https://wa.me/6282262783850" target="_blank"
                         class="flex items-center justify-center px-3 text-white transition-all border-2 border-dotted rounded-full aspect-square hover:text-emerald-500 hover:bg-white">
                         <i class="text-2xl align-middle fa-brands fa-whatsapp"></i>
                     </a>
-                    <span class="font-semibold text-white">082262783850</span>
                 </div>
                 <div class="flex items-center space-x-3">
+                    <span class="font-semibold text-white">dispardatapsel@gmail.com</span>
                     <a href="mailto:dispardatapsel@gmail.com" target="_blank"
                         class="flex items-center justify-center px-3 text-white transition-all border-2 border-dotted rounded-full aspect-square hover:text-emerald-500 hover:bg-white">
                         <i class="text-xl align-middle fa-solid fa-envelope"></i>
                     </a>
-                    <span class="font-semibold text-white">dispardatapsel@gmail.com</span>
                 </div>
             </div>
             <div class="flex flex-col px-6 gap-x-3 gap-y-2">

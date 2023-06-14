@@ -65,6 +65,12 @@
                                 @endforeach
                             </div>
                         </li>
+                        <li>
+                            <a href="{{ route('about') }}"
+                                class="text-base font-bold text-white transition-all hover:text-gray-medium focus:outline-none hover:underline">
+                                Tentang Kami
+                            </a>
+                        </li>
                     </ul>
                     @auth
                         <a href="{{ route('logout') }}"
@@ -116,12 +122,25 @@
                             </a>
                         </li>
                         <li class="w-full border-b-2">
-                            <a href=""
-                                class="flex justify-between w-full text-lg text-white text-white-center focus:outline-none focus:ring-2 focus:ring-white">
+                            <button id="btn-wisata-sm"
+                                class="text-base font-bold text-white transition-all hover:text-gray-medium focus:outline-none hover:underline">
                                 Wisata
-                                <div>
-                                    <i class="fa-solid fa-angle-right"></i>
-                                </div>
+                                <i class="fa-solid fa-caret-down"></i>
+                            </button>
+                            <div id="drop-wisata-sm"
+                                class="absolute left-0 z-50 hidden overflow-hidden bg-white rounded-md shadow-md h-fit">
+                                @foreach ($types as $type)
+                                    <a href="{{ route('browse', ['category' => [$type->name]]) }}"
+                                        class="inline-block w-full px-8 py-2 font-semibold transition-all border-b whitespace-nowrap text-gray-dark hover:bg-slate-300">
+                                        {{ $type->name }}
+                                    </a>
+                                @endforeach
+                            </div>
+                        </li>
+                        <li class="w-full border-b-2">
+                            <a href="{{ route('about') }}"
+                                class="flex justify-between w-full text-lg text-white text-white-center focus:outline-none focus:ring-2 focus:ring-white">
+                                Tentang Kami
                             </a>
                         </li>
                     </ul>

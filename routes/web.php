@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::prefix('destination')->resource('/destination', HomeController::class);
 Route::get('browse', [HomeController::class, 'browse'])->name('browse');
+Route::get('about', [HomeController::class, 'about'])->name('about');
 Route::get('login', [UserController::class, 'login'])->name('login');
 Route::get('login/callback', ([UserController::class, 'login_callback']))->name('login_callback');
 
