@@ -125,7 +125,7 @@
                 </div>
                 <hr class="my-3">
 
-                <div class="py-3">
+                <div class="py-3 mb-10">
                     <span class="text-lg font-bold">Berikan Ulasan Anda</span>
                     <form action="{{ route('store_review') }}" method="POST" class="px-4 py-4 border border-gray-400">
                         @csrf
@@ -168,11 +168,11 @@
         </div>
     </section>
     <div
-        class="fixed bottom-0 lg:hidden flex justify-evenly items-center w-full space-x-2 px-3 py-2 bg-white drop-shadow-[18px_-18px_28px_#d5d5d5]">
+        class="fixed bottom-0 flex items-center w-full px-3 py-2 space-x-2 bg-white lg:hidden justify-evenly drop-shadow-lg">
         <button class="w-1/2 p-2 transition bg-green-600 rounded hover:bg-green-800 btn-booking"
             onclick="location.href='{{ $destination->maps_url }}'" target="_blank">
             <i class="mr-2 text-white transition fa-solid fa-map-location-dot"></i>
-            <span class="text-lg font-semibold text-white transition">
+            <span class="font-semibold text-white transition">
                 Lihat Di Maps
             </span>
         </button>
