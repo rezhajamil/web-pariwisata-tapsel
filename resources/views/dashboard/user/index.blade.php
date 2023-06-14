@@ -36,7 +36,7 @@
                                         <td
                                             class="p-2 text-left align-middle bg-transparent whitespace-nowrap shadow-transparent">
                                             <span class="font-bold leading-tight text-slate-400">
-                                                {{ $key + $dests->firstItem() }}
+                                                {{ $key + 1 }}
                                             </span>
                                         </td>
                                         <td class="p-2 align-middle bg-transparent whitespace-nowrap shadow-transparent">
