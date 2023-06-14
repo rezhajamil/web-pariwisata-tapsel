@@ -49,7 +49,8 @@
                 </button>
             </div>
             <div class="absolute inset-0 z-50 flex items-center justify-center mx-auto w-fit">
-                <span class="px-3 py-2 text-6xl font-bold text-white uppercase rounded bg-emerald-500/60">Destinasi
+                <span
+                    class="px-3 py-2 text-3xl font-bold text-white uppercase rounded sm:text-6xl bg-emerald-500/60">Destinasi
                     Wisata</span>
             </div>
         </div>
