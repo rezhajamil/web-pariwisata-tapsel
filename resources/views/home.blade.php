@@ -102,7 +102,7 @@
                             <span class="text-xl font-bold text-white uppercase">{{ $gallery->destination->name }}</span>
                         </div>
                         <div class="px-1 py-1 bg-green-600 rounded h-fit w-fit">
-                            <div class="flex items-center">
+                            <div class="flex items-center w-full">
                                 @for ($i = 1; $i <= 5; $i++)
                                     @if ($i <= $gallery->rate)
                                         <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor"
@@ -130,42 +130,43 @@
         </div>
     </section>
 
-    <section class="px-6 py-6 mb-4 bg-emerald-500" id="contact">
+    <section class="px-6 py-6 bg-emerald-500" id="contact">
         <h1 class="w-full my-8 text-3xl font-bold text-center text-white">Hubungi Kami</h1>
         <div class="grid w-full grid-cols-1 mx-auto md:w-8/12 md:grid-cols-2 gap-y-2">
             <div class="flex flex-col items-end px-6 gap-x-3 gap-y-2">
-                <div class="flex items-center space-x-3">
-                    <span class="font-semibold text-white">Jl. Prof. Lafran pane, Komplek Perkantoran Pemda Tapsel,
-                        Sipirok</span>
+                <div class="flex items-center w-full space-x-3 md:flex-row-reverse md:gap-x-3">
                     <a href="" target="_blank"
                         class="flex items-center justify-center px-3 text-white transition-all border-2 border-dotted rounded-full aspect-square hover:text-emerald-500 hover:bg-white">
                         <i class="text-2xl align-middle fa-solid fa-location-dot"></i>
                     </a>
+                    <span class="font-semibold text-white sm:text-right">Jl. Prof. Lafran pane, Komplek Perkantoran Pemda
+                        Tapsel,
+                        Sipirok</span>
                 </div>
-                <div class="flex items-center space-x-3">
-                    <span class="font-semibold text-white">082262783850</span>
+                <div class="flex items-center w-full space-x-3 md:flex-row-reverse md:gap-x-3">
                     <a href="https://wa.me/6282262783850" target="_blank"
                         class="flex items-center justify-center px-3 text-white transition-all border-2 border-dotted rounded-full aspect-square hover:text-emerald-500 hover:bg-white">
                         <i class="text-2xl align-middle fa-brands fa-whatsapp"></i>
                     </a>
+                    <span class="font-semibold text-white sm:text-right">082262783850</span>
                 </div>
-                <div class="flex items-center space-x-3">
-                    <span class="font-semibold text-white">dispardatapsel@gmail.com</span>
+                <div class="flex items-center w-full space-x-3 md:flex-row-reverse md:gap-x-3">
                     <a href="mailto:dispardatapsel@gmail.com" target="_blank"
                         class="flex items-center justify-center px-3 text-white transition-all border-2 border-dotted rounded-full aspect-square hover:text-emerald-500 hover:bg-white">
                         <i class="text-xl align-middle fa-solid fa-envelope"></i>
                     </a>
+                    <span class="font-semibold text-white sm:text-right">dispardatapsel@gmail.com</span>
                 </div>
             </div>
             <div class="flex flex-col px-6 gap-x-3 gap-y-2">
-                <div class="flex items-center space-x-3">
+                <div class="flex items-center w-full space-x-3">
                     <a href="https://youtube.com/@KETAPSELAJA2022" target="_blank"
                         class="flex items-center justify-center px-3 text-white transition-all border-2 border-dotted rounded-full aspect-square hover:text-emerald-500 hover:bg-white">
                         <i class="text-xl align-middle fa-brands fa-youtube"></i>
                     </a>
                     <span class="font-semibold text-white">KETAPSELAJA</span>
                 </div>
-                <div class="flex items-center space-x-3">
+                <div class="flex items-center w-full space-x-3">
                     <a href="https://www.instagram.com/dispardatapsel/" target="_blank"
                         class="flex items-center justify-center px-3 text-white transition-all border-2 border-dotted rounded-full aspect-square hover:text-emerald-500 hover:bg-white">
                         <i class="text-2xl align-middle fa-brands fa-instagram"></i>
