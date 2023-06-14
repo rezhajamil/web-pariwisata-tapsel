@@ -19,7 +19,8 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        $dests = Destination::with(['destType', 'reviews', 'images'])->orderBy('type')->orderBy('name')->get();
+        $dests = Destination::with(['destType', 'reviews', 'images'])->orderBy('type')->orderBy('name')->paginate(10);
+        // ddd($dests);
         return view('dashboard.dest.index', compact('dests'));
     }
 

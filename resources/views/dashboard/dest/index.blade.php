@@ -105,6 +105,7 @@
                             </tbody>
                         </table>
                     </div>
+                    {{ $dests->links('components.pagination', compact('dests')) }}
                 </div>
             </div>
         </div>

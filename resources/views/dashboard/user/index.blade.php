@@ -25,21 +25,20 @@
                                         Tanggal Daftar
                                     </th>
                                     <th
-                                        class="px-6 py-3 text-xs font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        class="px-6 py-3 text-xs font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                         Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($users as $key => $user)
-                                    <tr>
+                                    <tr class="border-b-2">
                                         <td
-                                            class="p-2 text-left align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                            class="p-2 text-left align-middle bg-transparent whitespace-nowrap shadow-transparent">
                                             <span class="font-bold leading-tight text-slate-400">
                                                 {{ $key + 1 }}
                                             </span>
                                         </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                        <td class="p-2 align-middle bg-transparent whitespace-nowrap shadow-transparent">
                                             <div class="flex px-2 py-1">
                                                 <div>
                                                     <img src="{{ $user->avatar }}"
@@ -55,19 +54,20 @@
                                             </div>
                                         </td>
                                         <td
-                                            class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                            class="p-2 text-center align-middle bg-transparent whitespace-nowrap shadow-transparent">
                                             <span class="font-semibold leading-tight text-slate-400">
                                                 {{ date('d-M-y', strtotime($user->created_at)) }}
                                             </span>
                                         </td>
-                                        <td
-                                            class="flex flex-col px-3 py-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent gap-y-2">
-                                            <form action="{{ route('admin.user.destroy', $user->id) }}" method="post">
+                                        <td class="p-2 text-center bg-transparent whitespace-nowrap shadow-transparent">
+                                            <form action="{{ route('admin.user.destroy', $user->id) }}" method="post"
+                                                class="block h-full my-auto">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" href=""
-                                                    class="text-sm font-semibold leading-tight text-red-700">
-                                                    Hapus </button>
+                                                    class="my-auto text-sm font-semibold leading-tight text-red-700">
+                                                    Hapus
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>
