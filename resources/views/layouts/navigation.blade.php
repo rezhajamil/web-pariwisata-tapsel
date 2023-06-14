@@ -92,7 +92,7 @@
                 </div>
             </div>
             <!-- For small screen -->
-            <div id="mobile-menu" class="absolute inset-0 z-10 flex flex-col hidden w-full h-screen bg-white md:hidden">
+            <div id="mobile-menu" class="absolute inset-0 z-50 flex flex-col hidden w-full h-screen bg-white md:hidden">
                 <div class="flex items-center justify-between p-4 pb-4 border-b border-gray-200">
                     @auth
                         <a href="{{ route('logout') }}"
@@ -122,11 +122,11 @@
                             </a>
                         </li>
                         <li class="w-full border-b-2">
-                            <button id="btn-wisata-sm"
+                            <a href="{{ route('browse') }}" id="btn-wisata-sm"
                                 class="text-base font-bold text-white transition-all hover:text-gray-medium focus:outline-none hover:underline">
                                 Wisata
-                                <i class="fa-solid fa-caret-down"></i>
-                            </button>
+                                {{-- <i class="fa-solid fa-caret-down"></i> --}}
+                            </a>
                             <div id="drop-wisata-sm"
                                 class="absolute left-0 z-50 hidden overflow-hidden bg-white rounded-md shadow-md h-fit">
                                 @foreach ($types as $type)
