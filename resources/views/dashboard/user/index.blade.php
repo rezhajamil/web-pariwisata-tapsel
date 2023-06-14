@@ -26,7 +26,8 @@
                                     </th>
                                     <th
                                         class="px-6 py-3 text-xs font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        Action</th>
+                                        Action
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,7 +36,7 @@
                                         <td
                                             class="p-2 text-left align-middle bg-transparent whitespace-nowrap shadow-transparent">
                                             <span class="font-bold leading-tight text-slate-400">
-                                                {{ $key + 1 }}
+                                                {{ $key + $dests->firstItem() }}
                                             </span>
                                         </td>
                                         <td class="p-2 align-middle bg-transparent whitespace-nowrap shadow-transparent">
